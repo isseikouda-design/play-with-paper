@@ -131,39 +131,22 @@ object.templateImages.forEach((src) => {
 
   const placeholder = document.createElement("div");
   placeholder.className = "template-placeholder";
-  placeholder.textContent = "0%";
+  placeholder.textContent = "Loading";
 
   const img = document.createElement("img");
+  img.src = src;
   img.alt = "Papercraft Template";
   img.className = "template-image";
+  img.loading = "lazy";
 
   img.onload = () => {
     placeholder.style.display = "none";
     img.classList.add("is-loaded");
   };
 
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", src, true);
-  xhr.responseType = "blob";
-
-  xhr.onprogress = (e) => {
-    if (e.lengthComputable) {
-      const percent = Math.round((e.loaded / e.total) * 100);
-      placeholder.textContent = `${percent}%`;
-    }
-  };
-
-  xhr.onload = () => {
-    if (xhr.status >= 200 && xhr.status < 300) {
-      img.src = URL.createObjectURL(xhr.response);
-    }
-  };
-
   wrapper.appendChild(placeholder);
   wrapper.appendChild(img);
   templateImages.appendChild(wrapper);
-
-  xhr.send();
 });
   document.getElementById("objectDescription").textContent = object.description;
   document.getElementById("objectMaterial").textContent = object.material;
