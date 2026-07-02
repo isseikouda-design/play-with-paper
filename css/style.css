@@ -183,14 +183,42 @@ a {
   align-items: center;
 }
 
-.template-image {
+.template-wrapper {
+  position: relative;
   width: 75%;
   max-width: 900px;
-  height: auto;
   margin-bottom: 32px;
+}
+
+.template-placeholder {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background: #fff;
   border: 1px solid #111;
+
+  font-size: 14px;
+  color: #666;
+}
+
+.template-image {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  background: #fff;
+  border: 1px solid #111;
+
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.template-image.is-loaded {
+  opacity: 1;
 }
 
 .info-area {
@@ -264,9 +292,8 @@ a {
     min-height: auto;
     padding: 32px 16px;
   }
-
-  .template-image {
-    width: 100%;
-    margin-bottom: 24px;
-  }
+.template-wrapper {
+  width: 100%;
+  margin-bottom: 24px;
+}
 }
