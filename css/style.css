@@ -252,15 +252,21 @@ a {
 }
 @media (max-width: 768px) {
   .model-area {
-    height: calc(100vh - 56px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 72px 24px;
+    height: 62vh;
   }
 
   #viewer {
-    width: 86%;
-    height: 62vh;
+    width: 100%;
+    height: 100%;
+  }
+
+  .template-area {
+    min-height: auto;
+    padding: 32px 16px;
+  }
+
+  .template-image {
+    width: 100%;
+    margin-bottom: 24px;
   }
 }
