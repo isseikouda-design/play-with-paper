@@ -127,26 +127,43 @@ templateImages.innerHTML = "";
 
 object.templateImages.forEach((src) => {
   const wrapper = document.createElement("div");
-wrapper.className = "template-wrapper";
+  wrapper.className = "template-wrapper";
 
-const placeholder = document.createElement("div");
-placeholder.className = "template-placeholder";
-placeholder.textContent = "Loading...";
+  const placeholder = document.createElement("div");
+  placeholder.className = "template-placeholder";
+  placeholder.textContent = "0%";
 
-const img = document.createElement("img");
-img.src = src;
-img.alt = "Papercraft Template";
-img.className = "template-image";
-img.loading = "lazy";
+  const img = document.createElement("img");
+  img.alt = "Papercraft Template";
+  img.className = "template-image";
 
-img.onload = () => {
-  placeholder.style.display = "none";
-  img.classList.add("is-loaded");
-};
+  img.onload = () => {
+    placeholder.style.display = "none";
+    img.classList.add("is-loaded");
+  };
 
-wrapper.appendChild(placeholder);
-wrapper.appendChild(img);
-templateImages.appendChild(wrapper);
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", src, true);
+  xhr.responseType = "blob";
+
+  xhr.onprogress = (e) => {
+    if (e.lengthComputable) {
+      const percent = Math.round((e.loaded / e.total) * 100);
+      placeholder.textContent = `${percent}%`;
+    }
+  };
+
+  xhr.onload = () => {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      img.src = URL.createObjectURL(xhr.response);
+    }
+  };
+
+  wrapper.appendChild(placeholder);
+  wrapper.appendChild(img);
+  templateImages.appendChild(wrapper);
+
+  xhr.send();
 });
   document.getElementById("objectDescription").textContent = object.description;
   document.getElementById("objectMaterial").textContent = object.material;

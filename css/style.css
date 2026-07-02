@@ -201,8 +201,9 @@ a {
   background: #fff;
   border: 1px solid #111;
 
-  font-size: 14px;
-  color: #666;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
 }
 
 .template-image {
