@@ -132,11 +132,23 @@ a {
 /* detail */
 
 .detail-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 56px;
   padding: 0 24px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  z-index: 50;
+  background: transparent;
+  pointer-events: none;
+}
+
+.detail-header a,
+.detail-header h1 {
+  pointer-events: auto;
 }
 
 .detail-header a {
@@ -331,3 +343,4 @@ a {
 #viewer canvas {
   touch-action: pan-y;
 }
+

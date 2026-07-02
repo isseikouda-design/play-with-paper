@@ -275,7 +275,7 @@ object.templateImages.forEach((src) => {
   document.getElementById("objectSize").textContent = object.size;
   document.getElementById("downloadButton").href = object.templateFile;
 
-  initViewer(object.model);
+  initViewer(object.model, object.viewer);
 }
 const backButton = document.getElementById("backButton");
 

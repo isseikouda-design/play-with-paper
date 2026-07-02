@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "GLTFLoader";
 import { OrbitControls } from "OrbitControls";
 
-export function initViewer(modelPath) {
+export function initViewer(modelPath, settings = {}) {
   const viewer = document.getElementById("viewer");
   if (!viewer) return;
 
@@ -50,11 +50,27 @@ controls.enableZoom = false;
     model.position.sub(center);
 
     const maxSize = Math.max(size.x, size.y, size.z);
-    model.scale.setScalar(2 / maxSize);
+
+    const baseScale = 2 / maxSize;
+const customScale = settings.scale ?? 1;
+
+model.scale.setScalar(baseScale * customScale);
+
+if (settings.position) {
+  model.position.x += settings.position.x ?? 0;
+  model.position.y += settings.position.y ?? 0;
+  model.position.z += settings.position.z ?? 0;
+}
+
+if (settings.rotation) {
+  model.rotation.x += settings.rotation.x ?? 0;
+  model.rotation.y += settings.rotation.y ?? 0;
+  model.rotation.z += settings.rotation.z ?? 0;
+}
 
     function animate() {
       requestAnimationFrame(animate);
-      model.rotation.y += 0.003;
+      //model.rotation.y += 0.003;
       controls.update();
       renderer.render(scene, camera);
     }

@@ -7,6 +7,11 @@ export const objects = {
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
     thumbnail: "./images/sample_image_1.webp",
     model: "./models/usedbanana_remesh.glb",
+    viewer: {
+  scale: 1.2,
+  position: { x: 0, y: -0.2, z: 0 },
+  rotation: { x: 0, y: -0.6, z: 0 }
+},
     templateImages: [
   "./images/usedbanana_remesh_template_1.png",
   "./images/usedbanana_remesh_template_2.png",
@@ -24,6 +29,11 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
     thumbnail: "./images/sample_image_2.webp",
     model: "./models/hammer.glb",
+    viewer: {
+  scale: 1.3,
+  position: { x: 0, y: -0.2, z: 0 },
+  rotation: { x: 0, y: -2, z: 0 }
+},
        templateImages: [
   "./images/hammer_01.png",
   "./images/hammer_02.png",
@@ -40,6 +50,11 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
     thumbnail: "./images/sample_image_3.webp",
     model: "./models/stone.glb",
+    viewer: {
+  scale: 1,
+  position: { x: 0, y: -1, z: 0 },
+  rotation: { x: 0, y: 0, z: 0 }
+},
            templateImages: [
   "./images/stone_01.png",
   "./images/stone_02.png",
@@ -55,6 +70,11 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
     thumbnail: "./images/sample_image_4.webp",
     model: "./models/garbagebag.glb",
+    viewer: {
+  scale: 1,
+  position: { x: 0, y: 0.1, z: 0 },
+  rotation: { x: 0, y: 1.3, z: 0 }
+},
       templateImages: [
   "./images/garbagebag_01.png",
   "./images/garbagebag_02.png",
@@ -74,6 +94,11 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
     thumbnail: "./images/sample_image_5.webp",
     model: "./models/shoe.glb",
+    viewer: {
+  scale: 1.2,
+  position: { x: 0, y: 0, z: 0 },
+  rotation: { x: 0, y: -1.5, z: 0 }
+},
          templateImages: [
   "./images/sneaker_01.png",
   "./images/sneaker_02.png",
@@ -93,6 +118,11 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
     thumbnail: "./images/sample_image_6.webp",
     model: "./models/wood.glb",
+    viewer: {
+  scale: 1.6,
+  position: { x: 0, y: -0.5, z: 0 },
+  rotation: { x: 0, y: 2.6, z: 0 }
+},
           templateImages: [
   "./images/wood_01.png",
   "./images/wood_02.png",

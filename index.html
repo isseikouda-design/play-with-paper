@@ -18,6 +18,12 @@
 </head>
 <body class="home-page">
 
+  <script>
+  if (sessionStorage.getItem("openGallery") === "1") {
+    document.body.classList.add("is-returning-gallery");
+  }
+</script>
+
   <main class="poster-home">
     <h1 class="home-copy" id="homeCopy">
   Let's Play with Paper!
@@ -32,10 +38,5 @@
   <script type="module" src="./js/main.js"></script>
 </body>
 
-<script>
-  if (sessionStorage.getItem("openGallery") === "1") {
-    document.body.classList.add("is-returning-gallery");
-  }
-</script>
 
 </html>
