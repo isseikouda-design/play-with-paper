@@ -7,19 +7,82 @@ const homeCopy = document.getElementById("homeCopy");
 const floatingItems = [];
 
 const itemSettings = [
-  { width: 720, tapRadius: 0.34, area: { xMin: 0.00, xMax: 0.30, yMin: 0.05, yMax: 0.45 }, vx: 0.22, vy: 0.14, rotationSpeed: 0.12 },
-  { width: 560, tapRadius: 0.32, area: { xMin: 0.30, xMax: 0.65, yMin: 0.05, yMax: 0.45 }, vx: -0.18, vy: 0.16, rotationSpeed: -0.16 },
-  { width: 460, tapRadius: 0.34, area: { xMin: 0.65, xMax: 0.95, yMin: 0.05, yMax: 0.45 }, vx: 0.14, vy: -0.18, rotationSpeed: 0.18 },
+  { width: 720, tapRadius: 0.34, mask: "./images/sample_image_1_mask.webp", area: { xMin: 0.00, xMax: 0.30, yMin: 0.05, yMax: 0.45 }, vx: 0.22, vy: 0.14, rotationSpeed: 0.12 },
+  { width: 560, tapRadius: 0.32, mask: "./images/sample_image_2_mask.webp", area: { xMin: 0.30, xMax: 0.65, yMin: 0.05, yMax: 0.45 }, vx: -0.18, vy: 0.16, rotationSpeed: -0.16 },
+  { width: 460, tapRadius: 0.34, mask: "./images/sample_image_3_mask.webp", area: { xMin: 0.65, xMax: 0.95, yMin: 0.05, yMax: 0.45 }, vx: 0.14, vy: -0.18, rotationSpeed: 0.18 },
 
-  { width: 550, tapRadius: 0.33, area: { xMin: 0.00, xMax: 0.30, yMin: 0.48, yMax: 0.88 }, vx: 0.16, vy: -0.12, rotationSpeed: -0.28 },
-  { width: 620, tapRadius: 0.36, area: { xMin: 0.30, xMax: 0.65, yMin: 0.48, yMax: 0.88 }, vx: -0.15, vy: -0.15, rotationSpeed: 0.14 },
-  { width: 680, tapRadius: 0.27, area: { xMin: 0.65, xMax: 0.95, yMin: 0.48, yMax: 0.88 }, vx: -0.2, vy: 0.12, rotationSpeed: 0.30 }
+  { width: 550, tapRadius: 0.33, mask: "./images/sample_image_4_mask.webp", area: { xMin: 0.00, xMax: 0.30, yMin: 0.48, yMax: 0.88 }, vx: 0.16, vy: -0.12, rotationSpeed: -0.28 },
+  { width: 620, tapRadius: 0.36, mask: "./images/sample_image_5_mask.webp", area: { xMin: 0.30, xMax: 0.65, yMin: 0.48, yMax: 0.88 }, vx: -0.15, vy: -0.15, rotationSpeed: 0.14 },
+  { width: 680, tapRadius: 0.27, mask: "./images/sample_image_6_mask.webp", area: { xMin: 0.65, xMax: 0.95, yMin: 0.48, yMax: 0.88 }, vx: -0.2, vy: 0.12, rotationSpeed: 0.30 }
 ];
 const zIndexes = [1, 2, 3, 4, 5, 6];
 
 for (let i = zIndexes.length - 1; i > 0; i--) {
   const j = Math.floor(Math.random() * (i + 1));
   [zIndexes[i], zIndexes[j]] = [zIndexes[j], zIndexes[i]];
+}
+const maskCache = {};
+
+function loadMask(src) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = src;
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+
+      maskCache[src] = {
+        canvas,
+        ctx,
+        width: canvas.width,
+        height: canvas.height
+      };
+
+      resolve();
+    };
+  });
+}
+
+function hitTestMask(item, clientX, clientY) {
+  const mask = maskCache[item.mask];
+  if (!mask) return false;
+
+  const centerX = item.x + item.width / 2;
+  const centerY = item.y + item.width / 2;
+
+  const dx = clientX - centerX;
+  const dy = clientY - centerY;
+
+  const rad = (-item.rotation * Math.PI) / 180;
+
+  const localX =
+    dx * Math.cos(rad) - dy * Math.sin(rad) + item.width / 2;
+
+  const localY =
+    dx * Math.sin(rad) + dy * Math.cos(rad) + item.width / 2;
+
+  if (
+    localX < 0 ||
+    localY < 0 ||
+    localX > item.width ||
+    localY > item.width
+  ) {
+    return false;
+  }
+
+  const maskX = Math.floor((localX / item.width) * mask.width);
+  const maskY = Math.floor((localY / item.width) * mask.height);
+
+  const pixel = mask.ctx.getImageData(maskX, maskY, 1, 1).data;
+
+  const brightness = pixel[0] + pixel[1] + pixel[2];
+
+  return brightness > 380;
 }
 
 if (objectGrid && homeCopy) {
@@ -66,7 +129,8 @@ floatingItems.push({
 
   href: `./object.html?id=${id}`,
   tapRadius: setting.tapRadius,
-  zIndex: Number(item.style.zIndex) || 2
+  zIndex: Number(item.style.zIndex) || 2,
+  mask: setting.mask || null
 });
   });
 
@@ -99,18 +163,10 @@ document.querySelector(".poster-home").addEventListener("click", (e) => {
 
   const candidates = floatingItems
     .filter((item) => item.href)
-    .filter((item) => {
-      const centerX = item.x + item.width / 2;
-      const centerY = item.y + item.width / 2;
-
-      const dx = e.clientX - centerX;
-      const dy = e.clientY - centerY;
-
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const radius = item.width * item.tapRadius;
-
-      return distance <= radius;
-    });
+  .filter((item) => {
+  if (!item.mask) return false;
+  return hitTestMask(item, e.clientX, e.clientY);
+});
 
   if (!candidates.length) return;
 
@@ -119,7 +175,15 @@ document.querySelector(".poster-home").addEventListener("click", (e) => {
   window.location.href = candidates[0].href;
 });
 
-  animateFloatingItems();
+  const masks = itemSettings
+  .map((setting) => setting.mask)
+  .filter(Boolean);
+
+Promise.all(masks.map(loadMask))
+  .catch(() => {})
+  .finally(() => {
+    animateFloatingItems();
+  });
 }
 
 function animateFloatingItems() {

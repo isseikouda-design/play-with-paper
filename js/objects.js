@@ -5,7 +5,7 @@ export const objects = {
     material: "paper",
     size: "A4 printable template",
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
-    thumbnail: "./images/sample_image_1.png",
+    thumbnail: "./images/sample_image_1.webp",
     model: "./models/usedbanana_remesh.glb",
     templateImages: [
   "./images/usedbanana_remesh_template_1.png",
@@ -22,7 +22,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     material: "paper",
     size: "A4 printable template",
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
-    thumbnail: "./images/sample_image_2.png",
+    thumbnail: "./images/sample_image_2.webp",
     model: "./models/hammer.glb",
        templateImages: [
   "./images/hammer_01.png",
@@ -38,7 +38,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     material: "paper",
     size: "A4 printable template",
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
-    thumbnail: "./images/sample_image_3.png",
+    thumbnail: "./images/sample_image_3.webp",
     model: "./models/stone.glb",
            templateImages: [
   "./images/stone_01.png",
@@ -53,7 +53,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     material: "paper",
     size: "A4 printable template",
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
-    thumbnail: "./images/sample_image_4.png",
+    thumbnail: "./images/sample_image_4.webp",
     model: "./models/garbagebag.glb",
       templateImages: [
   "./images/garbagebag_01.png",
@@ -72,7 +72,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     material: "paper",
     size: "A4 printable template",
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
-    thumbnail: "./images/sample_image_5.png",
+    thumbnail: "./images/sample_image_5.webp",
     model: "./models/shoe.glb",
          templateImages: [
   "./images/sneaker_01.png",
@@ -91,7 +91,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
     material: "paper",
     size: "A4 printable template",
     description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
-    thumbnail: "./images/sample_image_6.png",
+    thumbnail: "./images/sample_image_6.webp",
     model: "./models/wood.glb",
           templateImages: [
   "./images/wood_01.png",
