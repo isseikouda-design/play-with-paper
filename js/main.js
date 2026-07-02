@@ -1,0 +1,142 @@
+import { objects } from "./objects.js";
+import { initViewer } from "./viewer.js";
+
+const objectGrid = document.getElementById("objectGrid");
+const homeCopy = document.getElementById("homeCopy");
+
+const floatingItems = [];
+
+const itemSettings = [
+  { width: 720, area: { xMin: 0.00, xMax: 0.30, yMin: 0.05, yMax: 0.45 }, vx: 0.22, vy: 0.14, rotationSpeed: 0.12 },
+  { width: 560, area: { xMin: 0.30, xMax: 0.65, yMin: 0.05, yMax: 0.45 }, vx: -0.18, vy: 0.16, rotationSpeed: -0.16 },
+  { width: 460, area: { xMin: 0.65, xMax: 0.95, yMin: 0.05, yMax: 0.45 }, vx: 0.14, vy: -0.18, rotationSpeed: 0.18 },
+
+  { width: 550, area: { xMin: 0.00, xMax: 0.30, yMin: 0.48, yMax: 0.88 }, vx: 0.16, vy: -0.12, rotationSpeed: -0.28 },
+  { width: 620, area: { xMin: 0.30, xMax: 0.65, yMin: 0.48, yMax: 0.88 }, vx: -0.15, vy: -0.15, rotationSpeed: 0.14 },
+  { width: 680, area: { xMin: 0.65, xMax: 0.95, yMin: 0.48, yMax: 0.88 }, vx: -0.2, vy: 0.12, rotationSpeed: 0.30 }
+];
+
+if (objectGrid && homeCopy) {
+  Object.keys(objects).slice(0, 6).forEach((id, index) => {
+    const object = objects[id];
+    const setting = itemSettings[index];
+
+    const item = document.createElement("a");
+    item.className = `gallery-item item-${index + 1}`;
+    item.href = `./object.html?id=${id}`;
+    item.style.width = `${setting.width}px`;
+
+    item.innerHTML = `
+      <img src="${object.thumbnail}" alt="${object.title}">
+    `;
+
+    objectGrid.appendChild(item);
+
+    const area = setting.area;
+
+const x =
+  window.innerWidth * area.xMin +
+  Math.random() * (window.innerWidth * (area.xMax - area.xMin) - setting.width);
+
+const y =
+  window.innerHeight * area.yMin +
+  Math.random() * (window.innerHeight * (area.yMax - area.yMin) - setting.width);
+floatingItems.push({
+
+  element: item,
+
+x: x,
+y: y,
+
+  vx: setting.vx + (Math.random() - 0.5) * 0.08,
+
+  vy: setting.vy + (Math.random() - 0.5) * 0.08,
+
+  width: setting.width,
+
+  rotation: Math.random() * 360,
+
+  rotationSpeed: setting.rotationSpeed
+});
+  });
+
+  const movingGuide = document.getElementById("movingGuide");
+
+if (movingGuide) {
+  floatingItems.push({
+    element: movingGuide,
+    x: window.innerWidth * 0.35,
+    y: window.innerHeight * 0.45,
+    vx: 0.18,
+    vy: -0.13,
+    width: 320,
+    rotation: 0,
+    rotationSpeed: 0.08
+  });
+}
+
+ document.querySelector(".poster-home").addEventListener("click", () => {
+  objectGrid.classList.add("is-visible");
+  homeCopy.classList.add("is-clicked");
+});
+
+  animateFloatingItems();
+}
+
+function animateFloatingItems() {
+  const screenW = window.innerWidth;
+  const screenH = window.innerHeight;
+
+  floatingItems.forEach((item) => {
+    item.x += item.vx;
+    item.y += item.vy;
+  item.rotation += item.rotationSpeed;
+
+    const size = item.width;
+
+    if (item.x <= 0 || item.x + size >= screenW) {
+      item.vx *= -1;
+    }
+
+    if (item.y <= 0 || item.y + size >= screenH) {
+      item.vy *= -1;
+    }
+
+  item.element.style.transform = `
+  translate(${item.x}px, ${item.y}px)
+  rotate(${item.rotation}deg)
+`;
+  });
+
+  requestAnimationFrame(animateFloatingItems);
+}
+
+const viewer = document.getElementById("viewer");
+
+if (viewer) {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id") || Object.keys(objects)[0];
+  const object = objects[id];
+
+  document.title = object.title;
+
+  document.getElementById("objectTitle").textContent = object.title;
+  const templateImages = document.getElementById("templateImages");
+
+templateImages.innerHTML = "";
+
+object.templateImages.forEach((src) => {
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = "Papercraft Template";
+  img.className = "template-image";
+  img.loading = "lazy";
+  templateImages.appendChild(img);
+});
+  document.getElementById("objectDescription").textContent = object.description;
+  document.getElementById("objectMaterial").textContent = object.material;
+  document.getElementById("objectSize").textContent = object.size;
+  document.getElementById("downloadButton").href = object.templateFile;
+
+  initViewer(object.model);
+}

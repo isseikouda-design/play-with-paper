@@ -1,0 +1,159 @@
+export const objects = {
+  usedbanana01: {
+    title: "Used Banana 01",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
+    thumbnail: "./images/sample_image_1.png",
+    model: "./models/usedbanana_remesh.glb",
+    templateImages: [
+  "./images/usedbanana_remesh_template_1.png",
+  "./images/usedbanana_remesh_template_2.png",
+  "./images/usedbanana_remesh_template_3.png",
+  "./images/usedbanana_remesh_template_4.png"
+],
+templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana02: {
+    title: "hammer",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
+    thumbnail: "./images/sample_image_2.png",
+    model: "./models/hammer.glb",
+       templateImages: [
+  "./images/hammer_01.png",
+  "./images/hammer_02.png",
+  "./images/hammer_03.png",
+],
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana03: {
+    title: "stone",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
+    thumbnail: "./images/sample_image_3.png",
+    model: "./models/stone.glb",
+           templateImages: [
+  "./images/stone_01.png",
+  "./images/stone_02.png",
+],
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana04: {
+    title: "garbage bag",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
+    thumbnail: "./images/sample_image_4.png",
+    model: "./models/garbagebag.glb",
+      templateImages: [
+  "./images/garbagebag_01.png",
+  "./images/garbagebag_02.png",
+  "./images/garbagebag_03.png",
+  "./images/garbagebag_04.png",
+  "./images/garbagebag_05.png",
+  "./images/garbagebag_06.png"
+],
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana05: {
+    title: "sneaker",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
+    thumbnail: "./images/sample_image_5.png",
+    model: "./models/shoe.glb",
+         templateImages: [
+  "./images/sneaker_01.png",
+  "./images/sneaker_02.png",
+  "./images/sneaker_03.png",
+  "./images/sneaker_04.png",
+  "./images/sneaker_05.png",
+  "./images/sneaker_06.png"
+],
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana06: {
+    title: "wood",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "The purpose of this site is to 3D-scan everyday objects that people tend to pass by without a second glance, create flat patterns based on the resulting data, share them, and let people enjoy them as paper crafts.",
+    thumbnail: "./images/sample_image_6.png",
+    model: "./models/wood.glb",
+          templateImages: [
+  "./images/wood_01.png",
+  "./images/wood_02.png",
+  "./images/wood_03.png",
+  "./images/wood_04.png",
+  "./images/wood_05.png",
+  "./images/wood_06.png",
+  "./images/wood_07.png",
+  "./images/wood_08.png",
+  "./images/wood_09.png",
+  "./images/wood_10.png",
+  "./images/wood_11.png"
+],
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana07: {
+    title: "Used Banana 07",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "Temporary object data for layout testing.",
+    thumbnail: "./images/sample_image_7.jpeg",
+    model: "./models/usedbanana_remesh.glb",
+    templateImage: "./images/usedbanana_remesh_template.png",
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana08: {
+    title: "Used Banana 08",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "Temporary object data for layout testing.",
+    thumbnail: "./images/sample_image_8.jpeg",
+    model: "./models/usedbanana_remesh.glb",
+    templateImage: "./images/usedbanana_remesh_template.png",
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana09: {
+    title: "Used Banana 09",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "Temporary object data for layout testing.",
+    thumbnail: "./images/sample_image_1.jpeg",
+    model: "./models/usedbanana_remesh.glb",
+    templateImage: "./images/usedbanana_remesh_template.png",
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  },
+
+  usedbanana10: {
+    title: "Used Banana 10",
+    type: "3D scan / papercraft",
+    material: "paper",
+    size: "A4 printable template",
+    description: "Temporary object data for layout testing.",
+    thumbnail: "./images/sample_image_1.jpeg",
+    model: "./models/usedbanana_remesh.glb",
+    templateImage: "./images/usedbanana_remesh_template.png",
+    templateFile: "./templates/usedbanana_remesh.pdf"
+  }
+};

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Object Detail</title>
+<link rel="stylesheet" href="./css/style.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "GLTFLoader": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+        "OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <header class="detail-header">
+    <a href="./index.html">← back</a>
+    <h1 id="objectTitle">Object</h1>
+  </header>
+
+  <main class="detail-layout">
+    <section class="model-area">
+      <div id="viewer">
+  <div id="viewerLoading">0%</div>
+</div>
+    </section>
+
+   <section class="template-area">
+  <div id="templateImages"></div>
+</section>
+
+    <section class="info-area">
+  <p id="objectDescription"></p>
+
+  <dl>
+    <dt>Material</dt>
+    <dd id="objectMaterial"></dd>
+
+    <dt>Size</dt>
+    <dd id="objectSize"></dd>
+
+    <dt>Data</dt>
+    <dd>
+      3D scan data. Provided by several contributors.
+    </dd>
+
+    <dt>Site / Contact</dt>
+    <dd>
+      Created and managed by Issei Kouda.<br>
+      <a href="mailto:Issei.kouda@icloud.com">Issei.kouda@icloud.com</a>
+    </dd>
+  </dl>
+
+  <a id="downloadButton" class="download-button" href="" download>
+    Download template
+  </a>
+</section>
+  </main>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

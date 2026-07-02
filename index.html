@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papercraft Archive</title>
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "GLTFLoader": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+        "OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+</head>
+<body class="home-page">
+
+  <main class="poster-home">
+    <h1 class="home-copy" id="homeCopy">
+  Let's Play with Paper!
+</h1>
+
+<section class="poster-gallery" id="objectGrid" aria-label="Papercraft objects">
+  <p class="moving-guide" id="movingGuide">Click on the moving object!</p>
+</section>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
