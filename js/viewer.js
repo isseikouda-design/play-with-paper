@@ -26,8 +26,11 @@ export function initViewer(modelPath, settings = {}) {
  const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 
-/* ページスクロールを優先するため、ホイールズームを無効化 */
-controls.enableZoom = false;
+
+const isSp = window.matchMedia("(max-width: 768px)").matches;
+
+controls.enableZoom = isSp;
+
 
   const light = new THREE.HemisphereLight(0xffffff, 0x888888, 3);
   scene.add(light);
@@ -70,7 +73,7 @@ if (settings.rotation) {
 
     function animate() {
       requestAnimationFrame(animate);
-      //model.rotation.y += 0.003;
+      model.rotation.y += 0.003;
       controls.update();
       renderer.render(scene, camera);
     }

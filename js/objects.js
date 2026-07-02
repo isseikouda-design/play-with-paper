@@ -1,6 +1,6 @@
 export const objects = {
   usedbanana01: {
-    title: "Used Banana 01",
+    title: "Used Banana",
     type: "3D scan / papercraft",
     material: "paper",
     size: "A4 printable template",
@@ -18,7 +18,7 @@ export const objects = {
   "./images/usedbanana_remesh_template_3.png",
   "./images/usedbanana_remesh_template_4.png"
 ],
-templateFile: "./templates/usedbanana_remesh.pdf"
+templateFile: "./templates/usedbanana.pdf"
   },
 
   usedbanana02: {
@@ -39,7 +39,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
   "./images/hammer_02.png",
   "./images/hammer_03.png",
 ],
-    templateFile: "./templates/usedbanana_remesh.pdf"
+    templateFile: "./templates/hammer.pdf"
   },
 
   usedbanana03: {
@@ -59,7 +59,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
   "./images/stone_01.png",
   "./images/stone_02.png",
 ],
-    templateFile: "./templates/usedbanana_remesh.pdf"
+    templateFile: "./templates/stone.pdf"
   },
 
   usedbanana04: {
@@ -83,7 +83,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
   "./images/garbagebag_05.png",
   "./images/garbagebag_06.png"
 ],
-    templateFile: "./templates/usedbanana_remesh.pdf"
+    templateFile: "./templates/garbagebag.pdf"
   },
 
   usedbanana05: {
@@ -107,7 +107,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
   "./images/sneaker_05.png",
   "./images/sneaker_06.png"
 ],
-    templateFile: "./templates/usedbanana_remesh.pdf"
+    templateFile: "./templates/sneaker.pdf"
   },
 
   usedbanana06: {
@@ -136,7 +136,7 @@ templateFile: "./templates/usedbanana_remesh.pdf"
   "./images/wood_10.png",
   "./images/wood_11.png"
 ],
-    templateFile: "./templates/usedbanana_remesh.pdf"
+    templateFile: "./templates/wood.pdf"
   },
 
   usedbanana07: {
