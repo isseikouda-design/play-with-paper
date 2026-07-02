@@ -132,6 +132,11 @@ floatingItems.push({
   zIndex: Number(item.style.zIndex) || 2,
   mask: setting.mask || null
 });
+
+item.style.transform = `
+  translate(${x}px, ${y}px)
+  rotate(${floatingItems[floatingItems.length - 1].rotation}deg)
+`;
   });
 
   const movingGuide = document.getElementById("movingGuide");
@@ -147,6 +152,11 @@ if (movingGuide) {
     rotation: 0,
     rotationSpeed: 0.08
   });
+  movingGuide.style.transform = `
+  translate(${window.innerWidth * 0.35}px, ${window.innerHeight * 0.45}px)
+  rotate(0deg)
+`;
+
 }
 
 document.querySelector(".poster-home").addEventListener("click", (e) => {
@@ -178,6 +188,15 @@ document.querySelector(".poster-home").addEventListener("click", (e) => {
   const masks = itemSettings
   .map((setting) => setting.mask)
   .filter(Boolean);
+
+if (sessionStorage.getItem("openGallery") === "1") {
+  objectGrid.classList.add("is-visible");
+  homeCopy.classList.add("is-clicked");
+
+  sessionStorage.removeItem("openGallery");
+  document.body.classList.remove("is-returning-gallery");
+}
+
 
 Promise.all(masks.map(loadMask))
   .catch(() => {})
@@ -257,4 +276,11 @@ object.templateImages.forEach((src) => {
   document.getElementById("downloadButton").href = object.templateFile;
 
   initViewer(object.model);
+}
+const backButton = document.getElementById("backButton");
+
+if (backButton) {
+  backButton.addEventListener("click", () => {
+    sessionStorage.setItem("openGallery", "1");
+  });
 }

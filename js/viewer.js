@@ -29,7 +29,7 @@ controls.enableDamping = true;
 /* ページスクロールを優先するため、ホイールズームを無効化 */
 controls.enableZoom = false;
 
-  const light = new THREE.HemisphereLight(0xffffff, 0x444444, 2);
+  const light = new THREE.HemisphereLight(0xffffff, 0x888888, 3);
   scene.add(light);
 
   const loader = new GLTFLoader();

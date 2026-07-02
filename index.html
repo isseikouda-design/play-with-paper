@@ -27,6 +27,15 @@
   <p class="moving-guide" id="movingGuide">Click on the moving object!</p>
 </section>
 
+</main>
+
   <script type="module" src="./js/main.js"></script>
 </body>
+
+<script>
+  if (sessionStorage.getItem("openGallery") === "1") {
+    document.body.classList.add("is-returning-gallery");
+  }
+</script>
+
 </html>

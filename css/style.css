@@ -60,7 +60,9 @@ a {
   color: #111;
   pointer-events: none;
   will-change: transform;
+  opacity: 0;
 }
+
 
 .poster-gallery {
   position: absolute;
@@ -75,6 +77,9 @@ a {
 .poster-gallery.is-visible {
   opacity: 1;
   pointer-events: auto;
+}
+.poster-gallery.is-visible .moving-guide {
+  opacity: 1;
 }
 
 .gallery-item {
@@ -112,6 +117,17 @@ a {
   z-index: 3;
 }
 
+
+.home-page.is-returning-gallery .home-copy {
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+}
+
+.home-page.is-returning-gallery .poster-gallery,
+.home-page.is-returning-gallery .gallery-item {
+  transition: none;
+}
 
 /* detail */
 
@@ -290,10 +306,28 @@ a {
   width: 100%;
   margin-bottom: 24px;
 }
-}
 
-@media (max-width: 768px) {
   .gallery-item {
     pointer-events: none;
   }
+
+  .home-copy {
+    white-space: nowrap;
+    font-size: 18px;
+  }
+
+  .info-area {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .download-button {
+    font-size: 16px;
+  }
+
+
+}
+
+#viewer canvas {
+  touch-action: pan-y;
 }
