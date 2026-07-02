@@ -250,3 +250,17 @@ a {
   pointer-events: none;
   animation: none;
 }
+@media (max-width: 768px) {
+  .model-area {
+    height: calc(100vh - 56px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 24px;
+  }
+
+  #viewer {
+    width: 86%;
+    height: 62vh;
+  }
+}
