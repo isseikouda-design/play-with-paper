@@ -107,18 +107,11 @@ a {
   filter: brightness(0.96);
 }
 
-.gallery-item {
-  z-index: 2;
-}
 
 .moving-guide {
   z-index: 3;
 }
 
-.item-6,
-.item-5 {
-  z-index: 4;
-}
 
 /* detail */
 
@@ -297,4 +290,10 @@ a {
   width: 100%;
   margin-bottom: 24px;
 }
+}
+
+@media (max-width: 768px) {
+  .gallery-item {
+    pointer-events: none;
+  }
 }
