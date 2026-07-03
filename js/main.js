@@ -5,6 +5,12 @@ const objectGrid = document.getElementById("objectGrid");
 const homeCopy = document.getElementById("homeCopy");
 
 const floatingItems = [];
+let draggingItem = null;
+
+let didDrag = false;
+let pointerStartX = 0;
+let pointerStartY = 0;
+let suppressClick = false;
 
 const itemSettings = [
   { width: 720, tapRadius: 0.34, mask: "./images/sample_image_1_mask.webp", area: { xMin: 0.00, xMax: 0.30, yMin: 0.05, yMax: 0.45 }, vx: 0.22, vy: 0.14, rotationSpeed: 0.12 },
@@ -122,6 +128,11 @@ floatingItems.push({
   vx: setting.vx + (Math.random() - 0.5) * 0.08,
   vy: setting.vy + (Math.random() - 0.5) * 0.08,
 
+  dragging: false,
+
+  dragOffsetX: 0,
+  dragOffsetY: 0,
+
   width: setting.width,
 
   rotation: Math.random() * 360,
@@ -169,7 +180,14 @@ document.querySelector(".poster-home").addEventListener("click", (e) => {
     return;
   }
 
-  if (!isSp) return;
+ if (suppressClick) {
+  e.preventDefault();
+  suppressClick = false;
+  didDrag = false;
+  return;
+}
+
+if (!isSp) return;
 
   const candidates = floatingItems
     .filter((item) => item.href)
@@ -210,8 +228,10 @@ function animateFloatingItems() {
   const screenH = window.innerHeight;
 
   floatingItems.forEach((item) => {
+    if (!item.dragging) {
     item.x += item.vx;
     item.y += item.vy;
+}
   item.rotation += item.rotationSpeed;
 
     const size = item.width;
@@ -291,3 +311,55 @@ if (backButton) {
     sessionStorage.setItem("openGallery", "1");
   });
 }
+document.addEventListener("pointerdown", (e) => {
+  if (!objectGrid || !objectGrid.classList.contains("is-visible")) return;
+
+  const candidates = floatingItems
+    .filter(item => item.href)
+    .filter(item => hitTestMask(item, e.clientX, e.clientY));
+
+  if (!candidates.length) return;
+
+  candidates.sort((a, b) => b.zIndex - a.zIndex);
+
+  draggingItem = candidates[0];
+  draggingItem.dragging = true;
+
+  draggingItem.dragOffsetX = e.clientX - draggingItem.x;
+  draggingItem.dragOffsetY = e.clientY - draggingItem.y;
+
+  didDrag = false;
+
+  pointerStartX = e.clientX;
+pointerStartY = e.clientY;
+suppressClick = false;
+
+  e.target.setPointerCapture?.(e.pointerId);
+});
+document.addEventListener("pointermove", (e) => {
+  if (!draggingItem) return;
+
+  e.preventDefault();
+
+  draggingItem.x = e.clientX - draggingItem.dragOffsetX;
+  draggingItem.y = e.clientY - draggingItem.dragOffsetY;
+
+  const moveX = e.clientX - pointerStartX;
+const moveY = e.clientY - pointerStartY;
+const moveDistance = Math.sqrt(moveX * moveX + moveY * moveY);
+
+if (moveDistance > 6) {
+  didDrag = true;
+  suppressClick = true;
+}
+}, { passive: false });
+
+document.addEventListener("pointerup", () => {
+
+  if (!draggingItem) return;
+
+  draggingItem.dragging = false;
+
+  draggingItem = null;
+
+});
