@@ -18,7 +18,8 @@ export const objects = {
   "./images/usedbanana_remesh_template_3.png",
   "./images/usedbanana_remesh_template_4.png"
 ],
-templateFile: "./templates/usedbanana.pdf"
+templateFile: "./templates/usedbanana.pdf",
+instructionFile: "./instructions/used-banana_tenkai.pdf",
   },
 
   usedbanana02: {
@@ -39,7 +40,8 @@ templateFile: "./templates/usedbanana.pdf"
   "./images/hammer_02.png",
   "./images/hammer_03.png",
 ],
-    templateFile: "./templates/hammer.pdf"
+    templateFile: "./templates/hammer.pdf",
+    instructionFile: "./instructions/hammer_tenkai.pdf",
   },
 
   usedbanana03: {
@@ -59,7 +61,8 @@ templateFile: "./templates/usedbanana.pdf"
   "./images/stone_01.png",
   "./images/stone_02.png",
 ],
-    templateFile: "./templates/stone.pdf"
+    templateFile: "./templates/stone.pdf",
+    instructionFile: "./instructions/stone_tenkai.pdf",
   },
 
   usedbanana04: {
@@ -83,7 +86,8 @@ templateFile: "./templates/usedbanana.pdf"
   "./images/garbagebag_05.png",
   "./images/garbagebag_06.png"
 ],
-    templateFile: "./templates/garbagebag.pdf"
+    templateFile: "./templates/garbagebag.pdf",
+    instructionFile: "./instructions/garbagebag_tenkai.pdf",
   },
 
   usedbanana05: {
@@ -107,7 +111,8 @@ templateFile: "./templates/usedbanana.pdf"
   "./images/sneaker_05.png",
   "./images/sneaker_06.png"
 ],
-    templateFile: "./templates/sneaker.pdf"
+    templateFile: "./templates/sneaker.pdf",
+    instructionFile: "./instructions/sneaker_tenkai.pdf",
   },
 
   usedbanana06: {
@@ -136,7 +141,8 @@ templateFile: "./templates/usedbanana.pdf"
   "./images/wood_10.png",
   "./images/wood_11.png"
 ],
-    templateFile: "./templates/wood.pdf"
+    templateFile: "./templates/wood.pdf",
+    instructionFile: "./instructions/wood_tenkai.pdf",
   },
 
   usedbanana07: {
@@ -160,7 +166,8 @@ templateFile: "./templates/usedbanana.pdf"
     thumbnail: "./images/sample_image_8.jpeg",
     model: "./models/usedbanana_remesh.glb",
     templateImage: "./images/usedbanana_remesh_template.png",
-    templateFile: "./templates/usedbanana_remesh.pdf"
+    templateFile: "./templates/usedbanana_remesh.pdf",
+    instructionFile: "./instructions/usedbanana_remesh_instruction.pdf",
   },
 
   usedbanana09: {

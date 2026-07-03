@@ -273,7 +273,14 @@ object.templateImages.forEach((src) => {
   document.getElementById("objectDescription").textContent = object.description;
   document.getElementById("objectMaterial").textContent = object.material;
   document.getElementById("objectSize").textContent = object.size;
-  document.getElementById("downloadButton").href = object.templateFile;
+  const downloadButton = document.getElementById("downloadButton");
+const instructionButton = document.getElementById("instructionButton");
+
+downloadButton.href = object.templateFile;
+downloadButton.download = object.templateFile.split("/").pop();
+
+instructionButton.href = object.instructionFile;
+instructionButton.download = object.instructionFile.split("/").pop();
 
   initViewer(object.model, object.viewer);
 }
